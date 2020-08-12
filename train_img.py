@@ -12,6 +12,7 @@ import torchvision.transforms as transforms
 from torchvision.utils import save_image
 import torchvision.datasets as vdsets
 
+
 from lib.resflow import ACT_FNS, ResidualFlow
 import lib.datasets as datasets
 import lib.optimizers as optim
@@ -378,9 +379,9 @@ elif args.data == 'imagenet64':
         args.imagesize = 64
     print("Load ImageNet (long)")
     path = r"/home/dsi/eyalbetzalel/glow/GLOW/GLOW/imagenet64/imagenet64"
-    trainSet = datasets.ImageFolder(path + "/train_64x64" , transform=transform)
+    trainSet = vdsets.ImageFolder(path + "/train_64x64" , transform=transform)
     train_loader = DataLoader(trainSet, shuffle=False, batch_size=args.batchsize, num_workers=args.nworkers)
-    testSet = datasets.ImageFolder(path + "/valid_64x64" , transform=transform)
+    testSet = vdsets.ImageFolder(path + "/valid_64x64" , transform=transform)
     test_loader = DataLoader(testSet, shuffle=False, batch_size=args.val_batchsize, num_workers=args.nworkers)
     print("Finish Load ImageNet")
 #    train_loader = torch.utils.data.DataLoader(

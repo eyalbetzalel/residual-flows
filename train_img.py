@@ -378,6 +378,7 @@ elif args.data == 'imagenet64':
         logger.info('Changing image size to 64.')
         args.imagesize = 64
     print("Load ImageNet (long)")
+    transform=transforms.Compose([add_noise]))
     path = r"/home/dsi/eyalbetzalel/glow/GLOW/GLOW/imagenet64/imagenet64"
     trainSet = vdsets.ImageFolder(path + "/train_64x64" , transform=transform)
     train_loader = DataLoader(trainSet, shuffle=False, batch_size=args.batchsize, num_workers=args.nworkers)

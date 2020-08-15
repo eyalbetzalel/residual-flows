@@ -441,7 +441,7 @@ model = ResidualFlow(
     n_classes=n_classes,
     block_type=args.block,
 )
-
+model.double()
 model.to(device)
 ema = utils.ExponentialMovingAverage(model)
 
@@ -646,7 +646,7 @@ def train(epoch, model):
                         if p.grad is not None:
                             p.grad /= args.update_freq
 
-            grad_norm = torch.nn.utils.clip_grad.clip_grad_norm_(model.parameters().float(), float(1))
+            grad_norm = torch.nn.utils.clip_grad.clip_grad_norm_(model.parameters(), 1.0)
             if args.learn_p: compute_p_grads(model)
 
             optimizer.step()

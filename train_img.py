@@ -379,12 +379,12 @@ elif args.data == 'imagenet64':
     train_loader = torch.utils.data.DataLoader(
         datasets.Imagenet64(train=True, transform=transforms.Compose([
             add_noise,
-        ])).float(), batch_size=args.batchsize, shuffle=True, num_workers=args.nworkers
+        ])), batch_size=args.batchsize, shuffle=True, num_workers=args.nworkers
     )
     test_loader = torch.utils.data.DataLoader(
         datasets.Imagenet64(train=False, transform=transforms.Compose([
             add_noise,
-        ])).float(), batch_size=args.val_batchsize, shuffle=False, num_workers=args.nworkers
+        ])), batch_size=args.val_batchsize, shuffle=False, num_workers=args.nworkers
     )
 
 if args.task in ['classification', 'hybrid']:

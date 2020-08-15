@@ -43,7 +43,7 @@ def convert_path_to_npy(*, path='train_64x64', outfile='train_64x64.npy'):
 
 
 if __name__ == '__main__':
-    convert_path_to_npy(path='train_64x64', outfile='train_64x64.npy')
-    convert_path_to_npy(path='valid_64x64', outfile='valid_64x64.npy')
+    convert_path_to_npy(path='/home/dsi/eyalbetzalel/glow/GLOW/GLOW/imagenet64/imagenet64/train_64x64', outfile='train_64x64.npy')
+    convert_path_to_npy(path='/home/dsi/eyalbetzalel/glow/GLOW/GLOW/imagenet64/imagenet64/valid_64x64', outfile='valid_64x64.npy')
     #convert_path_to_npy(path='train_32x32', outfile='train_32x32.npy')
     #convert_path_to_npy(path='valid_32x32', outfile='valid_32x32.npy')

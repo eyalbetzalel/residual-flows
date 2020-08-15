@@ -12,7 +12,6 @@ import torchvision.transforms as transforms
 from torchvision.utils import save_image
 import torchvision.datasets as vdsets
 
-
 from lib.resflow import ACT_FNS, ResidualFlow
 import lib.datasets as datasets
 import lib.optimizers as optim
@@ -377,24 +376,16 @@ elif args.data == 'imagenet64':
     if args.imagesize != 64:
         logger.info('Changing image size to 64.')
         args.imagesize = 64
-    print("Load ImageNet (long)")
-    transform=transforms.Compose([transforms.ToTensor(),add_noise])
-    path = r"/home/dsi/eyalbetzalel/glow/GLOW/GLOW/imagenet64/imagenet64"
-    trainSet = vdsets.ImageFolder(path + "/train_64x64" , transform=transform)
-    train_loader = torch.utils.data.DataLoader(trainSet, shuffle=False, batch_size=args.batchsize, num_workers=args.nworkers)
-    testSet = vdsets.ImageFolder(path + "/valid_64x64" , transform=transform)
-    test_loader = torch.utils.data.DataLoader(testSet, shuffle=False, batch_size=args.val_batchsize, num_workers=args.nworkers)
-    print("Finish Load ImageNet")
-#    train_loader = torch.utils.data.DataLoader(
-#        datasets.Imagenet64(train=True, transform=transforms.Compose([
-#            add_noise,
-#        ])), batch_size=args.batchsize, shuffle=True, num_workers=args.nworkers
-#    )
-#    test_loader = torch.utils.data.DataLoader(
-#        datasets.Imagenet64(train=False, transform=transforms.Compose([
-#            add_noise,
-#        ])), batch_size=args.val_batchsize, shuffle=False, num_workers=args.nworkers
-#    )
+    train_loader = torch.utils.data.DataLoader(
+        datasets.Imagenet64(train=True, transform=transforms.Compose([
+            add_noise,
+        ])), batch_size=args.batchsize, shuffle=True, num_workers=args.nworkers
+    )
+    test_loader = torch.utils.data.DataLoader(
+        datasets.Imagenet64(train=False, transform=transforms.Compose([
+            add_noise,
+        ])), batch_size=args.val_batchsize, shuffle=False, num_workers=args.nworkers
+    )
 
 if args.task in ['classification', 'hybrid']:
     try:
